@@ -2,7 +2,7 @@ package http
 
 import (
 	"github.com/labstack/echo"
-	"social-tech/userservice/internal/app"
+	"github.com/mrcelviano/userservice/internal/app"
 )
 
 type userHandlers struct {

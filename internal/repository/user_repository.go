@@ -1,6 +1,6 @@
 package repository
 
-import "social-tech/userservice/internal/app"
+import "github.com/mrcelviano/userservice/internal/app"
 
 type userRepository struct{}
 

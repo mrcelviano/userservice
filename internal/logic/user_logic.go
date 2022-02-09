@@ -1,6 +1,6 @@
 package logic
 
-import "social-tech/userservice/internal/app"
+import "github.com/mrcelviano/userservice/internal/app"
 
 type userLogic struct {
 	repository app.UserRepository

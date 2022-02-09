@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/labstack/echo"
-	"social-tech/userservice/commons"
-	"social-tech/userservice/internal/http"
-	"social-tech/userservice/internal/logic"
-	"social-tech/userservice/internal/repository"
+	"github.com/mrcelviano/userservice/commons"
+	"github.com/mrcelviano/userservice/internal/http"
+	"github.com/mrcelviano/userservice/internal/logic"
+	"github.com/mrcelviano/userservice/internal/repository"
 )
 
 func main() {
