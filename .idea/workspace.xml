@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26a6f37b-4576-4013-b42b-fdee0e0975c7" name="Changes" comment="add_logic">
+      <change afterPath="$PROJECT_DIR$/commons/connections.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/db.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/dbrsession.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/dump_event_resiver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/middleware.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/app/pagination.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/logic/user_logic.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/logic/user_logic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/user_repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,10 +1,20 @@
+# github.com/dgrijalva/jwt-go v3.2.0+incompatible
+## explicit
+github.com/dgrijalva/jwt-go
+# github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
+## explicit; go 1.13
+github.com/gocraft/dbr
+github.com/gocraft/dbr/dialect
 # github.com/labstack/echo v3.3.10+incompatible
 ## explicit
 github.com/labstack/echo
+github.com/labstack/echo/middleware
 # github.com/labstack/gommon v0.3.1
 ## explicit; go 1.12
+github.com/labstack/gommon/bytes
 github.com/labstack/gommon/color
 github.com/labstack/gommon/log
+github.com/labstack/gommon/random
 # github.com/mattn/go-colorable v0.1.11
 ## explicit; go 1.13
 github.com/mattn/go-colorable
@@ -34,3 +44,5 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
+# google.golang.org/appengine v1.6.7
+## explicit; go 1.11
