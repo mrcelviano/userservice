@@ -16,6 +16,12 @@ func NewUserLogic(repo app.UserRepository) app.UserLogic {
 }
 
 func (u *userLogic) Create(ctx context.Context, user app.User) (resp app.User, err error) {
+	log.Println("check user fields")
+	emailIsExist, nameIsExist, err := u.repository.Check(ctx, user.Email, user.Name)
+	if err == nil && !emailIsExist && !nameIsExist {
+		//добавить отправку уведомления в notification service
+		return u.repository.Create(ctx, user)
+	}
 	return
 }
 
