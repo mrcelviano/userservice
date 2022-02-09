@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
 	github.com/labstack/echo v3.3.10+incompatible
+	github.com/pkg/errors v0.9.1
 )
 
 require (

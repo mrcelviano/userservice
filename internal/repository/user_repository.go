@@ -80,6 +80,16 @@ func (u *userRepository) Delete(ctx context.Context, id int64) (err error) {
 	return
 }
 
+func (u *userRepository) GetTotal(ctx context.Context) (total int64, err error) {
+	sess := commons.DBSessionFromContext(ctx)
+
+	_, err = sess.Select("count(*)").
+		From("users").
+		Where("is_deleted is false").
+		LoadContext(ctx, &total)
+	return
+}
+
 func (u *userRepository) Check(ctx context.Context, email string, name string) (emailIsExist bool, nameIsExist bool, err error) {
 	//sess := commons.DBSessionFromContext(ctx)
 
