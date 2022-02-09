@@ -30,5 +30,5 @@ type UserRepository interface {
 	GetList(context.Context, Pagination) (Users, error)
 	GetTotal(context.Context) (int64, error)
 	Delete(context.Context, int64) error
-	Check(context.Context, string, string) (bool, bool, error)
+	Check(context.Context, User) (bool, error)
 }
