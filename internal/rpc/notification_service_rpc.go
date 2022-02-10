@@ -39,6 +39,9 @@ func (n *NotificationGRPC) SendNotification(ctx context.Context, user app.User) 
 		Email: user.Email,
 		Name:  user.Name,
 	}})
+	if err != nil {
+		return 0, errors.Wrap(err, ErrIn+NotificationServiceName)
+	}
 
 	return id.TaskID, nil
 }

@@ -3,9 +3,9 @@
   {
     "host":"127.0.0.1",
     "port":"5432",
-    "user":"postgres_user",
+    "user":"postgres",
     "dbName":"postgres",
-    "password":"postgres"
+    "password":""
   },
   "services": {
     "notificationservice": "127.0.0.1:8081"

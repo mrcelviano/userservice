@@ -93,7 +93,7 @@ func (u *userRepository) GetTotal(ctx context.Context) (total int64, err error) 
 func (u *userRepository) Check(ctx context.Context, user app.User) (isExist bool, err error) {
 	sess := commons.DBSessionFromContext(ctx)
 
-	sql := "select exists (select email, name from users where email = ? or name = ?)"
+	sql := "select exists (select email, name from users where (email = ? or name = ?) and is_deleted = false)"
 	_, err = sess.SelectBySql(sql, user.Email, user.Name).LoadContext(ctx, &isExist)
 	return
 }
