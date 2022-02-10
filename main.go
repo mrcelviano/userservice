@@ -7,6 +7,7 @@ import (
 	"github.com/mrcelviano/userservice/internal/http"
 	"github.com/mrcelviano/userservice/internal/logic"
 	"github.com/mrcelviano/userservice/internal/repository"
+	"github.com/mrcelviano/userservice/internal/rpc"
 )
 
 func main() {
@@ -16,12 +17,13 @@ func main() {
 
 	//repo
 	var (
-		userRepo = repository.NewUserRepository()
+		userRepo     = repository.NewUserRepository()
+		notification = rpc.NewNotificationGRPCRepository()
 	)
 
 	//logic
 	var (
-		userLogic = logic.NewUserLogic(userRepo)
+		userLogic = logic.NewUserLogic(userRepo, notification)
 	)
 
 	//http

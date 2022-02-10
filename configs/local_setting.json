@@ -6,5 +6,8 @@
     "user":"postgres_user",
     "dbName":"postgres",
     "password":"postgres"
+  },
+  "services": {
+    "notificationservice": "127.0.0.1:8081"
   }
 }

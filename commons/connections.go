@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	gocraft "github.com/gocraft/dbr"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"sync"
 )
 

@@ -8,11 +8,15 @@ import (
 )
 
 type userLogic struct {
-	repository app.UserRepository
+	repository   app.UserRepository
+	notification app.NotificationGRPCRepository
 }
 
-func NewUserLogic(repo app.UserRepository) app.UserLogic {
-	return &userLogic{repository: repo}
+func NewUserLogic(repo app.UserRepository, notification app.NotificationGRPCRepository) app.UserLogic {
+	return &userLogic{
+		repository:   repo,
+		notification: notification,
+	}
 }
 
 func (u *userLogic) Create(ctx context.Context, user app.User) (resp app.User, err error) {
@@ -29,7 +33,12 @@ func (u *userLogic) Create(ctx context.Context, user app.User) (resp app.User, e
 	if err != nil {
 		return resp, errors.Wrap(err, "can`t create user")
 	}
+
 	//отправить уведомление в notification service
+	_, err = u.notification.SendNotification(ctx, resp)
+	if err != nil {
+		log.Println("can`t send notification. Error: ", err.Error())
+	}
 	return
 }
 
