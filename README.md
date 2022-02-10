@@ -1,5 +1,5 @@
 # userservice
-social-tech
+SocialTech
 
 Сервис отвечает за работу с пользователями
 
