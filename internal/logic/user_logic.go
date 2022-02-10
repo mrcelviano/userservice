@@ -43,11 +43,11 @@ func (u *userLogic) Create(ctx context.Context, user app.User) (resp app.User, e
 }
 
 func (u *userLogic) Update(ctx context.Context, user app.User) (resp app.User, err error) {
-	return u.Update(ctx, user)
+	return u.repository.Update(ctx, user)
 }
 
 func (u *userLogic) GetByID(ctx context.Context, id int64) (resp app.User, err error) {
-	return u.GetByID(ctx, id)
+	return u.repository.GetByID(ctx, id)
 }
 
 func (u *userLogic) GetList(ctx context.Context, p app.Pagination) (resp app.PaginationUsers, err error) {
@@ -66,5 +66,5 @@ func (u *userLogic) GetList(ctx context.Context, p app.Pagination) (resp app.Pag
 }
 
 func (u *userLogic) Delete(ctx context.Context, id int64) (err error) {
-	return u.Delete(ctx, id)
+	return u.repository.Delete(ctx, id)
 }

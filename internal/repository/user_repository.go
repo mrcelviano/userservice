@@ -40,7 +40,7 @@ func (u *userRepository) Update(ctx context.Context, user app.User) (resp app.Us
 		Set("name", user.Name).
 		Where("id = ?", user.ID).
 		Returning(u.retCols...).
-		LoadContext(ctx, &user)
+		LoadContext(ctx, &resp)
 	return
 }
 

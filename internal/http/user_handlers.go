@@ -16,9 +16,9 @@ func NewUserHandlers(rg *echo.Group, logic app.UserLogic) *echo.Group {
 
 	rg.POST("/", u.Create)
 	rg.GET("/", u.GetList)
-	rg.GET("/:id", u.GetByID)
-	rg.PUT("/:id", u.Update)
-	rg.DELETE("/:id", u.Delete)
+	rg.GET("/:id/", u.GetByID)
+	rg.PUT("/:id/", u.Update)
+	rg.DELETE("/:id/", u.Delete)
 
 	return rg
 }
