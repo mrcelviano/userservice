@@ -5,9 +5,9 @@ social-tech
 
 Сервис слушает порт 8080
 
-###HTTP
+### HTTP
 
-#####POST /api/
+##### POST /api/
 Создать пользователя
 
 Request body
@@ -27,12 +27,12 @@ Response body
 }
 ```
 
-#####DELETE /api/:id/
+##### DELETE /api/:id/
 Удалить пользователя
 
 Response: NoContent Status OK
 
-#####GET /api/1/
+##### GET /api/1/
 Получить пользователя по id
 
 Response body
@@ -44,7 +44,7 @@ Response body
 }
 ```
 
-#####GET /api/
+##### GET /api/
 Получить список пользователей
 
 Query parameters:
@@ -69,7 +69,7 @@ Response body
 }
 ```
 
-#####PUT /api/1/
+##### PUT /api/1/
 Обновить пользователя
 
 Request body
