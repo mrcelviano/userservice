@@ -6,10 +6,12 @@ require (
 	github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/pkg/errors v0.9.1
+	github.com/processout/grpc-go-pool v1.2.1
 )
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
+	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/labstack/gommon v0.3.1 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
@@ -20,4 +22,7 @@ require (
 	golang.org/x/sys v0.0.0-20211103235746-7861aae1554b // indirect
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
+	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
+	google.golang.org/grpc v1.44.0 // indirect
+	google.golang.org/protobuf v1.25.0 // indirect
 )

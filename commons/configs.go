@@ -11,11 +11,8 @@ var settings Settings
 
 //Settings - настройки для клиентов
 type Settings struct {
-	DataBase DataBase `json:"dataBase"`
-}
-
-func GetSettings() Settings {
-	return settings
+	DataBase DataBase     `json:"dataBase"`
+	Services ServicesList `json:"services"`
 }
 
 // ConfigInit считывает конфигурационный файл, находящийся по пути filepath
