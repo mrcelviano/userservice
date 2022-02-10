@@ -1,6 +1,12 @@
 package app
 
-import "context"
+import (
+	"context"
+	validation "github.com/go-ozzo/ozzo-validation/v4"
+	"github.com/go-ozzo/ozzo-validation/v4/is"
+	"github.com/pkg/errors"
+	"strings"
+)
 
 type Users []User
 
@@ -13,6 +19,21 @@ type User struct {
 	ID    int64  `json:"id" db:"id"`
 	Email string `json:"email" db:"email"`
 	Name  string `json:"name" db:"name"`
+}
+
+func (u *User) ValidateEmail() error {
+	email := strings.ReplaceAll(u.Email, "%40", "@")
+	email = strings.ToLower(email)
+	isValidEmail := CheckEmail(email)
+	if !isValidEmail {
+		return errors.New("email is invalid")
+	}
+	return nil
+}
+
+func CheckEmail(email string) bool {
+	err := validation.Validate(email, validation.Required, is.Email)
+	return err == nil && !strings.Contains(email, "|") && email != ""
 }
 
 type UserLogic interface {

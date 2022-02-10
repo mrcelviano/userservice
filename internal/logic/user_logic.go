@@ -20,6 +20,11 @@ func NewUserLogic(repo app.UserRepository, notification app.NotificationGRPCRepo
 }
 
 func (u *userLogic) Create(ctx context.Context, user app.User) (resp app.User, err error) {
+	log.Println("check valid email")
+	err = user.ValidateEmail()
+	if err != nil {
+		return resp, err
+	}
 	log.Println("check user fields")
 	isExist, err := u.repository.Check(ctx, user)
 	if err != nil {

@@ -3,6 +3,7 @@ module github.com/mrcelviano/userservice
 go 1.17
 
 require (
+	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
 	github.com/jinzhu/gorm v1.9.16
 	github.com/labstack/echo v3.3.10+incompatible
@@ -13,6 +14,7 @@ require (
 )
 
 require (
+	github.com/asaskevich/govalidator v0.0.0-20200108200545-475eaeb16496 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/labstack/gommon v0.3.1 // indirect
