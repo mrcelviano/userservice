@@ -20,7 +20,7 @@ import (
 const (
 	configsDirectory = "configs"
 
-	timeout = 5 * time.Second
+	contextTimeoutValue = 5 * time.Second
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 
 	//repo
 	var (
-		userRepo = repository.NewUserRepository(postgresConnection)
+		userRepo = repository.NewUserRepositoryPG(postgresConnection)
 	)
 
 	//service
@@ -75,7 +75,7 @@ func main() {
 
 	<-quit
 
-	ctx, shutdown := context.WithTimeout(context.Background(), timeout)
+	ctx, shutdown := context.WithTimeout(context.Background(), contextTimeoutValue)
 	defer shutdown()
 
 	err = e.Shutdown(ctx)

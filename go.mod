@@ -7,7 +7,7 @@ require (
 	github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
 	github.com/jinzhu/gorm v1.9.16
 	github.com/labstack/echo v3.3.10+incompatible
-	github.com/pkg/errors v0.9.1
+	github.com/lib/pq v1.1.1
 	github.com/processout/grpc-go-pool v1.2.1
 	github.com/sirupsen/logrus v1.8.1
 	google.golang.org/grpc v1.44.0
@@ -20,7 +20,6 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/lib/pq v1.1.1 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect

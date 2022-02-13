@@ -11,7 +11,7 @@ type userRepository struct {
 	pgSession *goCraft.Session
 }
 
-func NewUserRepository(pgDBConn *goCraft.Connection) domain.UserRepositoryPG {
+func NewUserRepositoryPG(pgDBConn *goCraft.Connection) domain.UserRepositoryPG {
 	return &userRepository{
 		pgSession: pgDBConn.NewSession(&eventReceiver{}),
 	}
