@@ -31,7 +31,6 @@ func (u *userService) Create(ctx context.Context, user domain.User) (domain.User
 		return user, err
 	}
 
-	//отправить уведомление в notification service
 	_, err = u.notification.SendNotification(ctx, newUser.ID, newUser.Email, newUser.Name)
 	if err != nil {
 		logger.Info("can`t send notification. Error: ", err.Error())
