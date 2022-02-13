@@ -84,7 +84,7 @@ func main() {
 	go func() {
 		err := server.Serve(lis)
 		if err != nil {
-			logger.Errorf("can`t run http server: %s\n", err.Error())
+			logger.Errorf("can`t run grpc server: %s\n", err.Error())
 			return
 		}
 	}()
@@ -101,7 +101,7 @@ func main() {
 
 	err = e.Shutdown(ctx)
 	if err != nil {
-		logger.Errorf("can`t stop server: %v", err.Error())
+		logger.Errorf("can`t stop http server: %v", err.Error())
 		return
 	}
 
