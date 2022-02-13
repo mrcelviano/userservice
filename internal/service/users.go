@@ -21,7 +21,7 @@ func NewUserService(userPG domain.UserRepositoryPG, notification notification.Se
 
 func (u *userService) Create(ctx context.Context, user domain.User) (domain.User, error) {
 	logger.Info("check valid email")
-	err := user.ValidateEmail()
+	err := user.ValidateUserFields()
 	if err != nil {
 		return user, domain.ErrInvalidEmail
 	}

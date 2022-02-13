@@ -23,7 +23,7 @@ type User struct {
 	Name  string `json:"name"`
 }
 
-func (u *User) ValidateEmail() error {
+func (u *User) ValidateUserFields() error {
 	isValid, err := validator.ValidateEmail(u.Email)
 	if err != nil || !isValid {
 		return ErrInvalidEmail
