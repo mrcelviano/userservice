@@ -61,6 +61,8 @@ func main() {
 	)
 	delivery.NewUserHandlers(e.Group("api"), userLogic)
 
+	logger.Info("server start")
+
 	go func() {
 		err := e.Start(":" + cfg.HTTP.Port)
 		if err != nil {
@@ -68,8 +70,6 @@ func main() {
 			return
 		}
 	}()
-
-	logger.Info("server started")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
