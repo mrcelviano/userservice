@@ -7,17 +7,17 @@ import (
 	"github.com/mrcelviano/userservice/pkg/database/postgres"
 )
 
-type userRepository struct {
+type userRepositoryPG struct {
 	pgSession *goCraft.Session
 }
 
 func NewUserRepositoryPG(pgDBConn *goCraft.Connection) domain.UserRepositoryPG {
-	return &userRepository{
+	return &userRepositoryPG{
 		pgSession: pgDBConn.NewSession(&eventReceiver{}),
 	}
 }
 
-func (u *userRepository) Create(ctx context.Context, user domain.User) (domain.User, error) {
+func (u *userRepositoryPG) Create(ctx context.Context, user domain.User) (domain.User, error) {
 	var resp domain.User
 	err := u.pgSession.
 		InsertInto("users").
@@ -31,7 +31,7 @@ func (u *userRepository) Create(ctx context.Context, user domain.User) (domain.U
 	return resp, err
 }
 
-func (u *userRepository) Update(ctx context.Context, user domain.User) (domain.User, error) {
+func (u *userRepositoryPG) Update(ctx context.Context, user domain.User) (domain.User, error) {
 	var resp domain.User
 	err := u.pgSession.
 		Update("users").
@@ -46,7 +46,7 @@ func (u *userRepository) Update(ctx context.Context, user domain.User) (domain.U
 	return resp, err
 }
 
-func (u *userRepository) GetByID(ctx context.Context, id int64) (domain.User, error) {
+func (u *userRepositoryPG) GetByID(ctx context.Context, id int64) (domain.User, error) {
 	var resp domain.User
 	_, err := u.pgSession.
 		Select("id", "email", "name").
@@ -59,7 +59,7 @@ func (u *userRepository) GetByID(ctx context.Context, id int64) (domain.User, er
 	return resp, err
 }
 
-func (u *userRepository) GetList(ctx context.Context, p domain.GetUserListRequest) ([]domain.User, error) {
+func (u *userRepositoryPG) GetList(ctx context.Context, p domain.GetUserListRequest) ([]domain.User, error) {
 	var resp []domain.User
 	selectSmt := u.pgSession.
 		Select("id", "email", "name").
@@ -76,7 +76,7 @@ func (u *userRepository) GetList(ctx context.Context, p domain.GetUserListReques
 	return resp, nil
 }
 
-func (u *userRepository) Delete(ctx context.Context, id int64) error {
+func (u *userRepositoryPG) Delete(ctx context.Context, id int64) error {
 	_, err := u.pgSession.
 		Update("users").
 		Set("is_deleted", true).
@@ -88,7 +88,7 @@ func (u *userRepository) Delete(ctx context.Context, id int64) error {
 	return nil
 }
 
-func (u *userRepository) GetTotal(ctx context.Context) (int64, error) {
+func (u *userRepositoryPG) GetTotal(ctx context.Context) (int64, error) {
 	var total int64
 	_, err := u.pgSession.
 		Select("count(*)").
