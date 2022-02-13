@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/mrcelviano/userservice/internal/config"
@@ -11,6 +12,7 @@ import (
 	"github.com/mrcelviano/userservice/pkg/database/postgres"
 	"github.com/mrcelviano/userservice/pkg/logger"
 	"github.com/mrcelviano/userservice/pkg/notification"
+	"net"
 	"os"
 	"os/signal"
 	"syscall"
@@ -51,7 +53,7 @@ func main() {
 
 	//service
 	var (
-		userLogic = service.NewUserService(userRepo, notificationClient)
+		userService = service.NewUserService(userRepo, notificationClient)
 	)
 
 	//delivery
@@ -59,7 +61,7 @@ func main() {
 	e.Pre(
 		middleware.AddTrailingSlash(),
 	)
-	delivery.NewUserHandlers(e.Group("api"), userLogic)
+	delivery.NewUserHandlers(e.Group("api"), userService)
 
 	logger.Info("server start")
 
@@ -70,6 +72,24 @@ func main() {
 			return
 		}
 	}()
+
+	logger.Info("http server start")
+
+	server := delivery.NewUserServer(userService)
+
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", cfg.GRPC.Port))
+	if err != nil {
+		logger.Errorf("can't listen tcp on port %s: %s\n", cfg.GRPC.Port, err.Error())
+	}
+	go func() {
+		err := server.Serve(lis)
+		if err != nil {
+			logger.Errorf("can`t run http server: %s\n", err.Error())
+			return
+		}
+	}()
+
+	logger.Info("grpc server start")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
@@ -84,4 +104,6 @@ func main() {
 		logger.Errorf("can`t stop server: %v", err.Error())
 		return
 	}
+
+	server.GracefulStop()
 }

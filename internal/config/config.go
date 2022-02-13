@@ -8,6 +8,7 @@ type (
 	Config struct {
 		Postgres PostgresConfig
 		HTTP     HTTPConfig
+		GRPC     GRPCConfig
 		Services map[string]string
 	}
 
@@ -20,6 +21,10 @@ type (
 	}
 
 	HTTPConfig struct {
+		Port string
+	}
+
+	GRPCConfig struct {
 		Port string
 	}
 )
@@ -43,6 +48,10 @@ func unmarshal(cfg *Config) error {
 	}
 
 	if err := viper.UnmarshalKey("services", &cfg.Services); err != nil {
+		return err
+	}
+
+	if err := viper.UnmarshalKey("grpc", &cfg.GRPC); err != nil {
 		return err
 	}
 

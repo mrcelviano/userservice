@@ -5,5 +5,5 @@ import (
 )
 
 type Service interface {
-	SendNotification(ctx context.Context, id int64, email, name string) (int64, error)
+	RegisterNotification(ctx context.Context, userID int64) (bool, error)
 }

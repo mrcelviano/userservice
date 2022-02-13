@@ -38,6 +38,7 @@ type UserService interface {
 	GetByID(context.Context, int64) (User, error)
 	GetList(context.Context, GetUserListRequest) (GetUserListResponse, error)
 	Delete(context.Context, int64) error
+	SetIsRegisteredStatus(context.Context, int64) error
 }
 
 type UserRepositoryPG interface {
@@ -47,4 +48,5 @@ type UserRepositoryPG interface {
 	GetList(context.Context, GetUserListRequest) ([]User, error)
 	GetTotal(context.Context) (int64, error)
 	Delete(context.Context, int64) error
+	SetIsRegisteredStatus(context.Context, int64) error
 }

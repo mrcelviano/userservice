@@ -2,7 +2,7 @@ package notification
 
 import (
 	"context"
-	"github.com/mrcelviano/userservice/pkg/notification/proto"
+	client "github.com/mrcelviano/userservice/pkg/notification/proto"
 	pool "github.com/processout/grpc-go-pool"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -31,27 +31,24 @@ func NewNotificationClient(serviceAddress map[string]string) (Service, error) {
 	return &notification, nil
 }
 
-func (n *notificationGRPC) SendNotification(ctx context.Context, id int64, email, name string) (int64, error) {
+func (n *notificationGRPC) RegisterNotification(ctx context.Context, userID int64) (bool, error) {
 	ctx, cansel := context.WithTimeout(ctx, time.Second*10)
 	defer cansel()
 
 	clientConn, err := n.pool.Get(ctx)
 	if err != nil {
-		return 0, err
+		return false, err
 	}
 
-	taskID, err := proto.NewNotificationServiceClient(clientConn).SendNotification(ctx,
-		&proto.SendNotificationRequest{
-			User: &proto.User{
-				ID:    id,
-				Email: email,
-				Name:  name,
-			}})
+	isRegistered, err := client.NewNotificationServiceClient(clientConn).RegisterNotification(ctx,
+		&client.RegisterNotificationRequest{
+			UserID: userID,
+		})
 	if err != nil {
-		return 0, ErrorNotificationService
+		return false, ErrorNotificationService
 	}
 
-	return taskID.GetTaskID(), nil
+	return isRegistered.GetIsRegistered(), nil
 }
 
 func (n *notificationGRPC) newGRPCConnectionPool(serviceAddress string, capacity int) (err error) {

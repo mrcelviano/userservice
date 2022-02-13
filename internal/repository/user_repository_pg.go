@@ -100,3 +100,15 @@ func (u *userRepositoryPG) GetTotal(ctx context.Context) (int64, error) {
 	}
 	return total, nil
 }
+
+func (u *userRepositoryPG) SetIsRegisteredStatus(ctx context.Context, id int64) error {
+	_, err := u.pgSession.
+		Update("users").
+		Set("is_registered", true).
+		Where("id = ?", id).
+		ExecContext(ctx)
+	if err != nil {
+		return err
+	}
+	return nil
+}

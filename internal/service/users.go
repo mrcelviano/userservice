@@ -31,9 +31,9 @@ func (u *userService) Create(ctx context.Context, user domain.User) (domain.User
 		return user, err
 	}
 
-	_, err = u.notification.SendNotification(ctx, newUser.ID, newUser.Email, newUser.Name)
-	if err != nil {
-		logger.Infof("can`t send notification: %s\n", err.Error())
+	isRegistered, err := u.notification.RegisterNotification(ctx, newUser.ID)
+	if err != nil && !isRegistered {
+		logger.Errorf("can`t registered notification: %s\n", err.Error())
 	}
 	return newUser, nil
 }
@@ -80,6 +80,15 @@ func (u *userService) Delete(ctx context.Context, id int64) error {
 	err := u.userPG.Delete(ctx, id)
 	if err != nil {
 		logger.Errorf("can`t delete user: %s\n", err.Error())
+		return domain.ErrInternalServerError
+	}
+	return nil
+}
+
+func (u *userService) SetIsRegisteredStatus(ctx context.Context, id int64) error {
+	err := u.userPG.SetIsRegisteredStatus(ctx, id)
+	if err != nil {
+		logger.Errorf("can`t set is registered status: %s\n", err.Error())
 		return domain.ErrInternalServerError
 	}
 	return nil
