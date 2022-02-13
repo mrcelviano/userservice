@@ -5,9 +5,6 @@ SocialTech
 
 Сервис слушает порт 8080
 
-### Запуск проекта
-Установить параметр Program arguments: -env local
-
 ### HTTP
 
 ##### POST /api/
