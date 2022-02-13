@@ -2,6 +2,9 @@
   "http": {
     "port": "8080"
   },
+  "grpc": {
+    "port": "8082"
+  },
   "postgres":
   {
     "host":"127.0.0.1",
