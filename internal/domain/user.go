@@ -24,8 +24,8 @@ type User struct {
 }
 
 func (u *User) ValidateUserFields() error {
-	isValid, err := validator.ValidateEmail(u.Email)
-	if err != nil || !isValid {
+	isValidEmail, err := validator.ValidateEmail(u.Email)
+	if err != nil || !isValidEmail {
 		return ErrInvalidEmail
 	}
 
